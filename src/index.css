@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+	background-color: white;
+}
+
+.bot {
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	right: 10px;
+	bottom: 10px;
+}
+
+.bot__icon {
+	width: 50px;
+	height: 50px;
+	background-color: white;
+	border-radius: 50%;
+	cursor: pointer;
+	padding: 4px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+		var(--tw-ring-shadow, 0 0 #0000), 0 20px 25px -5px rgb(0 0 0 / 0.1),
+		0 8px 10px -6px rgb(0 0 0 / 0.1);
+	background: rgba(255, 255, 255, 0.6);
+}
+
+.bot__header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: 70px;
+	color: black;
+	font-size: 24px;
+	padding-left: 20px;
+	align-items: center;
+}
+
+.chatWindow {
+	height: 600px;
+	width: 500px;
+	border-radius: 20px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-bottom: 10px;
+	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+		var(--tw-ring-shadow, 0 0 #0000), 0 20px 25px -5px rgb(0 0 0 / 0.1),
+		0 8px 10px -6px rgb(0 0 0 / 0.1);
+	background: rgba(255, 255, 255, 0.6);
+}
+
+.chatWindow__queryInput {
+	height: 3em;
+	flex: 1;
+	padding-left: 20px;
+	outline: none;
+	background: rgba(255, 255, 255, 0);
+}
+
+.chatWindow__querySubmit {
+	height: 100%;
+	width: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 0.6;
+}
+
+.chatWindow__queryContainer {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 10px;
+}
+
+.chatWindow__messageWindow {
+	height: 100%;
+	padding: 0px 20px;
+	display: flex;
+	flex-direction: column-reverse;
+	overflow-y: scroll;
+	scroll-behavior: smooth;
+	-webkit-overflow-scrolling: touch;
+}
+
+.message {
+	padding: 8px 16px;
+	border-radius: 20px;
+	max-width: 60%;
+}
+
+.message__input {
+	background-color: #0080ff;
+	color: #fefefe;
+	border-bottom-right-radius: 0px;
+}
+
+.message__output {
+	padding: 8px 16px;
+	background-color: #eeeeee;
+	border-bottom-left-radius: 0px;
+}
+
+.messageContainer {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-top: 10px;
+}
+
+.messageContainer__input {
+	align-items: flex-end;
+}
+
+.messageContainer__output {
+	align-items: flex-start;
+}
+
+.typingBubbleDot {
+	display: inline-block;
+	width: 4px;
+	height: 4px;
+	margin: 0px 2px;
+	background-color: black;
+	opacity: 0.4;
+	border-radius: 50%;
+	animation-name: loading;
+	animation-duration: 1.5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+.typingBubbleDot:nth-of-type(2) {
+	animation-delay: 0.3s;
+}
+
+.typingBubbleDot:nth-of-type(3) {
+	animation-delay: 0.6s;
+}
+
+.wallpaper {
+	position: fixed;
+	height: 100vh;
+	width: 100vw;
+	background-color: white;
+}
+
+.circle {
+	border-radius: 50%;
+	filter: blur(50px);
+	position: absolute;
+	--opacity: 1;
+}
+
+.circle__1 {
+	height: 1500px;
+	width: 1500px;
+	background-color: rgb(93, 145, 233, var(--opacity));
+	right: -10%;
+	top: 20%;
+	animation: float 17s linear infinite;
+}
+
+.circle__2 {
+	height: 375px;
+	width: 375px;
+	background-color: rgb(96, 192, 180, var(--opacity));
+	right: 10%;
+	top: -10%;
+	animation: float 13s linear infinite;
+}
+
+.circle__3 {
+	height: 500px;
+	width: 500px;
+	background-color: rgb(185, 154, 242, var(--opacity));
+	left: 15%;
+	top: 5%;
+	animation: float 11s linear infinite;
+}
+
+.circle__4 {
+	height: 300px;
+	width: 300px;
+	left: -5%;
+	top: 50%;
+	background-color: rgb(241, 153, 60, var(--opacity));
+	animation: float 7s linear infinite;
+}
+
+.circle__5 {
+	height: 300px;
+	width: 300px;
+	left: 45%;
+	top: -20%;
+	background-color: rgb(241, 153, 60, var(--opacity));
+	animation: float 5s linear infinite;
+}
+
+@keyframes loading {
+	0%,
+	60%,
+	100% {
+		transform: translateY(0);
+	}
+	30% {
+		transform: translateY(-4px);
+	}
+}
+
+@keyframes float {
+	0% {
+		transform: rotate(0deg) translate(-126px) rotate(0deg);
+		scale: 1;
+	}
+	50% {
+		transform: rotate(240deg) translate(-2px) rotate(-240deg);
+		scale: 1.3;
+	}
+	100% {
+		transform: rotate(360deg) translate(-126px) rotate(-360deg);
+		scale: 1;
+	}
+}
+
+@media only screen and (max-width: 640px) {
+	.chatWindow {
+		position: fixed;
+		top: 0;
+		right: 0;
+		height: 100vh;
+		width: 100vw;
+		border-radius: 0px;
+		background: rgba(255, 255, 255, 1);
+	}
+}
+
+@media only screen and (max-width: 1500px) {
+	.triangle,
+	.square {
+		display: none;
+	}
+}
